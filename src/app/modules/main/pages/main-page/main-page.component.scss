@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  margin: 0% 2% 0% 2%;
+
+  .scoreboard-card {
+    width: 25%;
+    margin-right: 1%;
+  }
+
+  .game-card {
+    width: 70%;
+    margin-left: 1%;
+  }
+}

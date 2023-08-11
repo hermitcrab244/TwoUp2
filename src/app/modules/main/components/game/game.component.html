@@ -1,0 +1,39 @@
+<div>
+  <mat-card class="msg-card">
+    <mat-card-content id="msg-content">
+      <div>
+        <b>{{ gameMessage }}</b>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div>
+  <mat-card class="game-card">
+    <mat-card-content id="game-content">
+      <div class="coin-img">
+        <img [src]="coin1" id="coin" [ngClass]="{ 'coin-flip': isAnimating }" />
+        <img [src]="coin2" id="coin" [ngClass]="{ 'coin-flip': isAnimating }" />
+      </div>
+      <div class="btn-container">
+        <div class="btn-select">
+          <button
+            mat-raised-button
+            id="btn-select-heads"
+            (click)="play(heads)"
+            [disabled]="selectDisabled"
+          >
+            Heads
+          </button>
+          <button
+            mat-raised-button
+            id="btn-select-tails"
+            (click)="play(tails)"
+            [disabled]="selectDisabled"
+          >
+            Tails
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
