@@ -5,14 +5,14 @@
   <mat-card-content>
     <div>
       <p id="title"><b>Scoreboard</b></p>
-      <p>Player:</p>
-      <p>Attempts:</p>
-      <p>Score:</p>
+      <p>Player: {{ playerName }}</p>
+      <p>Attempts: {{ attemptsCount }}</p>
+      <p>Score: {{ totalScore }}</p>
       <mat-divider></mat-divider>
       <p id="title"><b>Flip Outcome Count</b></p>
-      <p>Heads:</p>
-      <p>Tails:</p>
-      <p>Odds:</p>
+      <p>Heads: {{ headsCount }}</p>
+      <p>Tails: {{ tailsCount }}</p>
+      <p>Odds: {{ oddsCount }}</p>
     </div>
   </mat-card-content>
 </mat-card>

@@ -12,6 +12,11 @@ export class GameDataService {
 
   setRoundResults(data: ResultsInterface) {
     this.gameDataSubject.next(data);
+    console.log('Service');
     console.log(data);
+  }
+
+  getRoundResults() {
+    return this.gameDataSubject.asObservable();
   }
 }
