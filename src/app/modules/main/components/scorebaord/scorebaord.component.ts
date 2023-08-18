@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GameDataService } from 'src/app/core/services/gameService/game-data.service';
 import { ResultsInterface } from 'src/app/core/interfaces/results-interface';
@@ -8,10 +8,12 @@ import { ResultsInterface } from 'src/app/core/interfaces/results-interface';
   templateUrl: './scorebaord.component.html',
   styleUrls: ['./scorebaord.component.scss'],
 })
-export class ScorebaordComponent implements OnDestroy {
+export class ScorebaordComponent implements OnInit {
   private dataSubscription: Subscription;
 
   playerName = '';
+  userID!: number;
+  userColour = '';
   attemptsCount = 0;
   totalScore = 0;
   headsCount = 0;
@@ -25,42 +27,40 @@ export class ScorebaordComponent implements OnDestroy {
     this.dataSubscription = this.gameService
       .getRoundResults()
       .subscribe((data) => {
-        if (data) {
-          console.log('Scoreboard');
-          console.log(data);
-          this.outcome = data.outcome;
-          this.flipResult = data.flipResult;
-
-          switch (this.flipResult) {
-            case 'heads':
-              this.headsCount++;
-              break;
-            case 'tails':
-              this.tailsCount++;
-              break;
-            case 'headsOdds':
-              this.oddsCount++;
-              break;
-            case 'tailsOdds':
-              this.oddsCount++;
-              break;
-            default:
-              break;
-          }
-
-          if (this.outcome === 'win') {
-            this.totalScore++;
-          }
-
-          this.attemptsCount++;
+        if (!data) {
+          console.log('Fuck Elliott');
+          return;
         }
+
+        this.outcome = data.outcome;
+        this.flipResult = data.flipResult;
+
+        if (this.outcome === 'win') {
+          this.totalScore++;
+        }
+
+        switch (this.flipResult) {
+          case 'heads':
+            this.headsCount++;
+            break;
+          case 'tails':
+            this.tailsCount++;
+            break;
+          case 'headsOdds':
+            this.oddsCount++;
+            break;
+          case 'tailsOdds':
+            this.oddsCount++;
+            break;
+          default:
+            break;
+        }
+
+        this.attemptsCount++;
       });
   }
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
 
-  ngOnDestory() {
-    this.dataSubscription.unsubscribe();
+  ngOnInit() {
+    this.playerName = this.gameService.playerName;
   }
 }

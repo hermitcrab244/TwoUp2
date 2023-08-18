@@ -1,11 +1,21 @@
 <div class="btn-group">
-  <button mat-raised-button id="btn">
+  <button
+    mat-raised-button
+    id="btn"
+    (click)="openLeaderboard()"
+    matTooltip="Leaderboard"
+  >
     <img src="../../../../../assets/images/leaderboard.png" alt="leaderboard" />
   </button>
-  <button mat-raised-button id="btn">
+  <button
+    mat-raised-button
+    id="btn"
+    (click)="openSettings()"
+    matTooltip="Settings"
+  >
     <img src="../../../../../assets/images/settings.png" alt="settings" />
   </button>
-  <button mat-raised-button id="btn">
+  <button mat-raised-button id="btn" (click)="openEnd()" matTooltip="End Game">
     <img src="../../../../../assets/images/close.png" alt="close" />
   </button>
 </div>

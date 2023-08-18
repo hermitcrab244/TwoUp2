@@ -1,0 +1,52 @@
+<div class="container">
+  <div>
+    <h5>Dont have an account yet?</h5>
+  </div>
+  <form class="reg-form" [formGroup]="regForm" (ngSubmit)="registerUser()">
+    <div>
+      <mat-form-field id="username-field">
+        <mat-label for="username">Username</mat-label>
+        <input
+          matInput
+          placeholder="Username"
+          id="username"
+          formControlName="username"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field id="password-field">
+        <mat-label for="password">Password</mat-label>
+        <input
+          input
+          matInput
+          placeholder="Password"
+          id="password"
+          formControlName="password"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field id="confirmPassword-field">
+        <mat-label for="confirmPassword">Confirm Password</mat-label>
+        <input
+          input
+          input
+          matInput
+          placeholder="Confirm Password"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div id="loginBtn">
+      <button>Register</button>
+    </div>
+  </form>
+</div>

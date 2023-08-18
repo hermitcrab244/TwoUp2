@@ -1,0 +1,30 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  align-items: center;
+  text-align: center;
+  padding: 3%;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#login,
+#registration {
+  flex: 1;
+}
+
+#divider {
+  align-self: center;
+  align-self: stretch;
+  margin: 0 60px;
+}

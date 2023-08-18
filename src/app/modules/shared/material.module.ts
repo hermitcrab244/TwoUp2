@@ -14,6 +14,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -29,6 +31,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatTooltipModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatIconModule,
@@ -41,6 +45,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatTooltipModule,
+    MatSnackBarModule,
   ],
 })
 export class MaterialModule {}

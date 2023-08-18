@@ -7,6 +7,7 @@ import { LeaderbaordComponent } from './components/leaderbaord/leaderbaord.compo
 import { MaterialModule } from '../shared/material.module';
 import { ButtonsComponent } from './components/buttons/buttons.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { EndComponent } from './components/end/end.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SettingsComponent } from './components/settings/settings.component';
     LeaderbaordComponent,
     ButtonsComponent,
     SettingsComponent,
+    EndComponent,
   ],
   imports: [CommonModule, MaterialModule],
   exports: [

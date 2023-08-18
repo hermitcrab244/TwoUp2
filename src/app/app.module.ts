@@ -4,8 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainModule } from './modules/main/main.module';
-import { LoginModule } from './modules/auth/login/login.module';
-import { RegModule } from './modules/auth/reg/reg.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,8 +14,8 @@ import { RegModule } from './modules/auth/reg/reg.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MainModule,
-    LoginModule,
-    RegModule,
+    AuthModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
