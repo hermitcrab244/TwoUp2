@@ -34,11 +34,11 @@ export class LoginComponent implements OnInit {
       const password = this.loginForm.get('password')!.value;
 
       this.api.login(username, password).subscribe(
-        (response) => {
-          console.log(response.message);
+        (response: any) => {
+          console.log(response.message, response);
           this.gamedataSerive.playerName = username;
-          console.log(response.userID);
-          console.log(response.colour);
+          this.gamedataSerive.userID = response.userID;
+          this.gamedataSerive.userColourPref = response.colour_pref;
           this.router.navigate(['/two-up']);
           this.openSnackBar('Login Successful');
         },

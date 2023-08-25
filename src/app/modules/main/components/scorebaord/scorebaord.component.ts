@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GameDataService } from 'src/app/core/services/gameService/game-data.service';
-import { ResultsInterface } from 'src/app/core/interfaces/results-interface';
 
 @Component({
   selector: 'app-scorebaord',
   templateUrl: './scorebaord.component.html',
   styleUrls: ['./scorebaord.component.scss'],
 })
-export class ScorebaordComponent implements OnInit {
+export class ScorebaordComponent implements OnInit, OnDestroy {
   private dataSubscription: Subscription;
 
   playerName = '';
@@ -28,7 +27,6 @@ export class ScorebaordComponent implements OnInit {
       .getRoundResults()
       .subscribe((data) => {
         if (!data) {
-          console.log('Fuck Elliott');
           return;
         }
 
@@ -57,10 +55,23 @@ export class ScorebaordComponent implements OnInit {
         }
 
         this.attemptsCount++;
+
+        this.sendResults();
       });
   }
 
   ngOnInit() {
     this.playerName = this.gameService.playerName;
+  }
+
+  ngOnDestroy() {
+    this.dataSubscription.unsubscribe();
+  }
+
+  sendResults() {
+    const userID = this.gameService.userID;
+    const playerName = this.gameService.playerName;
+    const score = this.totalScore;
+    this.gameService.setEndGameResults({ userID, playerName, score });
   }
 }

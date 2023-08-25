@@ -8,6 +8,7 @@ import { MaterialModule } from '../shared/material.module';
 import { ButtonsComponent } from './components/buttons/buttons.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { EndComponent } from './components/end/end.component';
+import { EndPageComponent } from './components/end/pages/end-page/end-page.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { EndComponent } from './components/end/end.component';
     ButtonsComponent,
     SettingsComponent,
     EndComponent,
+    EndPageComponent,
   ],
   imports: [CommonModule, MaterialModule],
   exports: [

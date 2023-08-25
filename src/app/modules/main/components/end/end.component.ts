@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
+import { GameDataService } from 'src/app/core/services/gameService/game-data.service';
+import { APIService } from 'src/app/core/services/backendService/api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-end',
@@ -7,7 +11,48 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./end.component.scss'],
 })
 export class EndComponent implements OnInit {
-  constructor(public endDialogRef: MatDialogRef<EndComponent>) {}
+  user_ID!: number;
+  username!: string;
+  score!: number;
 
-  ngOnInit() {}
+  constructor(
+    private router: Router,
+    public endDialogRef: MatDialogRef<EndComponent>,
+    private gameService: GameDataService,
+    private api: APIService,
+    private snackBar: MatSnackBar
+  ) {}
+
+  ngOnInit() {
+    this.gameService.getEndGameResults().subscribe((data) => {
+      if (!data) {
+        return;
+      }
+
+      this.user_ID = data.userID;
+      this.username = data.playerName;
+      this.score = data.score;
+    });
+  }
+
+  endGame() {
+    this.api.endGame(this.user_ID, this.username, this.score).subscribe(
+      (response: any) => {
+        this.openSnackBar(response.message);
+      },
+      (error) => {
+        if (error) {
+          this.openSnackBar('Results failed to save');
+        }
+      }
+    );
+
+    this.router.navigate(['/end']);
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, '', {
+      duration: 2000,
+    });
+  }
 }

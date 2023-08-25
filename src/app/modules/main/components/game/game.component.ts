@@ -44,7 +44,6 @@ export class GameComponent {
     }
 
     this.flipAnimation();
-    setTimeout(() => {}, 6000);
 
     setTimeout(() => {
       this.setCoinFaces(flipResult);

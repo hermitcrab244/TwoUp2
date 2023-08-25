@@ -1,5 +1,5 @@
 export interface EndGameInterface {
-  user_ID: number;
+  userID: number;
   playerName: string;
   score: number;
 }

@@ -56,12 +56,40 @@ app.post("/login", (req, res) => {
         const colour = user.colour_pref;
         console.log(userID, colour);
 
-        res
-          .status(200)
-          .json({ message: "Login successful", colour_pref: colour });
+        res.status(200).json({
+          message: "Login successful",
+          userID: userID,
+          colour_pref: colour,
+        });
       } else {
         res.status(401).json({ message: "Invalid username or password" });
       }
+    }
+  });
+});
+
+app.post("/end", (req, res) => {
+  const { user_ID, username, score } = req.body;
+
+  const insertQuery = `INSERT INTO game (user_ID, username, score) VALUES (?, ?, ?)`;
+  db.query(insertQuery, [user_ID, username, score], (err, results) => {
+    if (err) {
+      res.status(500).json({ message: "Error saving game results" });
+    } else {
+      res.status(200).json({ message: "Results saved successfully" });
+    }
+  });
+});
+
+app.get("/retrieve-scores", (req, res) => {
+  const retrieveQuery =
+    "SELECT username, score FROM game ORDERY BY score DESC LIMIT 10";
+  db.query(retrieveQuery, (err, results) => {
+    if (err) {
+      res.status.json({ message: "Failed to retrieve scores" });
+    } else {
+      res.status(200).json({ message: "Successfully retireved scores" });
+      res.json(results);
     }
   });
 });

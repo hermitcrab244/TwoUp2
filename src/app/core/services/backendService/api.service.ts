@@ -19,4 +19,15 @@ export class APIService {
     const body = { username, password };
     return this.http.post(`${this.apiURL}/login`, body);
   }
+
+  endGame(user_ID: number, username: string, score: number) {
+    const body = { user_ID, username, score };
+    return this.http.post(`${this.apiURL}/end`, body);
+  }
+
+  leaderboard(): Observable<any> {
+    return this.http.get<any[]>(`${this.apiURL}/retrieve-scores`);
+  }
+
+  colour() {}
 }

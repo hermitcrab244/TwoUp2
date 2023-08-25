@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ResultsInterface } from '../../interfaces/results-interface';
 import { EndGameInterface } from '../../interfaces/end-game-interface';
@@ -6,12 +6,17 @@ import { EndGameInterface } from '../../interfaces/end-game-interface';
 @Injectable({
   providedIn: 'root',
 })
-export class GameDataService {
+export class GameDataService implements OnDestroy {
   playerName: string = '';
   userID!: number;
   userColourPref: string = '';
 
   constructor() {}
+
+  ngOnDestroy() {
+    this.gameDataSubject.complete();
+    this.endDataSubject.complete();
+  }
 
   private gameDataSubject = new BehaviorSubject<any>(null);
   private endDataSubject = new BehaviorSubject<any>(null);
