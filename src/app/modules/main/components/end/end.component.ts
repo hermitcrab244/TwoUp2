@@ -46,7 +46,7 @@ export class EndComponent implements OnInit {
         }
       }
     );
-
+    this.endDialogRef.close();
     this.router.navigate(['/end']);
   }
 

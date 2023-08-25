@@ -12,6 +12,6 @@ export class EndPageComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.router.navigate(['/auth']);
-    }, 5000);
+    }, 10000);
   }
 }
