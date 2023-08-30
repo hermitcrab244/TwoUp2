@@ -1,0 +1,59 @@
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin: 5%;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.button.groups {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  #colour-row-1,
+  #colour-row-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 60px;
+    height: 60px;
+    border-radius: 20%;
+    margin: 5px;
+  }
+}
+
+#btn1 {
+  background-color: black;
+}
+
+#btn2 {
+  background-color: rgb(169, 221, 214);
+}
+
+#btn3 {
+  background-color: rgb(97, 196, 70);
+}
+
+#btn4 {
+  background-color: rgb(210, 231, 74);
+}
+
+#btn5 {
+  background-color: rgb(158, 70, 189);
+}
+
+#btn6 {
+  background-color: rgb(235, 72, 72);
+}
