@@ -83,13 +83,17 @@ app.post("/end", (req, res) => {
 
 app.get("/retrieve-scores", (req, res) => {
   const retrieveQuery =
-    "SELECT username, score FROM game ORDERY BY score DESC LIMIT 10";
+    "SELECT username, score FROM game ORDER BY score DESC LIMIT 10";
   db.query(retrieveQuery, (err, results) => {
     if (err) {
       res.status.json({ message: "Failed to retrieve scores" });
     } else {
-      res.status(200).json({ message: "Successfully retireved scores" });
-      res.json(results);
+      const response = {
+        message: "Successfully retrieved scores",
+        data: results,
+      };
+
+      res.status(200).json(response);
     }
   });
 });
