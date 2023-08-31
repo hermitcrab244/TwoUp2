@@ -10,6 +10,7 @@ export class GameDataService implements OnDestroy {
   playerName: string = '';
   userID!: number;
   userColourPref: string = '';
+  colourChoice!: string;
 
   constructor() {}
 
@@ -20,6 +21,7 @@ export class GameDataService implements OnDestroy {
 
   private gameDataSubject = new BehaviorSubject<any>(null);
   private endDataSubject = new BehaviorSubject<any>(null);
+  private colourDataSubject = new BehaviorSubject<any>(null);
 
   setRoundResults(data: ResultsInterface) {
     this.gameDataSubject.next(data);
@@ -35,5 +37,15 @@ export class GameDataService implements OnDestroy {
 
   getEndGameResults() {
     return this.endDataSubject.asObservable();
+  }
+
+  setUserColourChoice(data: string) {
+    this.colourDataSubject.next(data);
+    this.userColourPref = data;
+    console.log('Service: ', data);
+  }
+
+  getUserColourChoice() {
+    return this.colourDataSubject.asObservable();
   }
 }

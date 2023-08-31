@@ -1,3 +1,13 @@
-<div id="page">
+<div
+  id="page"
+  [ngClass]="{
+    default: colourSelect === 'default',
+    aqua: colourSelect === 'aqua',
+    green: colourSelect === 'green',
+    yellow: colourSelect === 'yellow',
+    purple: colourSelect === 'purple',
+    red: colourSelect === 'red'
+  }"
+>
   <router-outlet></router-outlet>
 </div>

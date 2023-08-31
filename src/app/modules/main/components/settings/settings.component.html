@@ -1,18 +1,52 @@
 <div class="box">
   <div class="container">
-    <div>
+    <div id="closeContainer">
+      <button id="closeBtn" matTooltip="Close" mat-dialog-close>
+        <img
+          src="../../../../../assets/images/close.png"
+          alt="close"
+          height="30"
+          width="30"
+        />
+      </button>
+    </div>
+    <div id="title">
       <h2>Choose a theme</h2>
     </div>
     <div class="button groups">
       <div id="colour-row-1">
-        <button mat-raised-button id="btn1"></button>
-        <button mat-raised-button id="btn2"></button>
-        <button mat-raised-button id="btn3"></button>
+        <button
+          mat-raised-button
+          id="btn1"
+          (click)="colourSelect('default')"
+        ></button>
+        <button
+          mat-raised-button
+          id="btn2"
+          (click)="colourSelect('aqua')"
+        ></button>
+        <button
+          mat-raised-button
+          id="btn3"
+          (click)="colourSelect('green')"
+        ></button>
       </div>
       <div id="colour-row-2">
-        <button mat-raised-button id="btn4"></button>
-        <button mat-raised-button id="btn5"></button>
-        <button mat-raised-button id="btn6"></button>
+        <button
+          mat-raised-button
+          id="btn4"
+          (click)="colourSelect('yellow')"
+        ></button>
+        <button
+          mat-raised-button
+          id="btn5"
+          (click)="colourSelect('purple')"
+        ></button>
+        <button
+          mat-raised-button
+          id="btn6"
+          (click)="colourSelect('red')"
+        ></button>
       </div>
     </div>
   </div>

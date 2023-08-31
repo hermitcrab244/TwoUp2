@@ -1,26 +1,26 @@
 <div class="box">
   <div class="container">
     <div id="closeContainer">
-      <button
-        mat-raised-button
-        id="closeBtn"
-        matTooltip="Close"
-        mat-dialog-close
-      >
-        <img src="../../../../../assets/images/close.png" alt="close" />
+      <button id="closeBtn" matTooltip="Close" mat-dialog-close>
+        <img
+          src="../../../../../assets/images/close.png"
+          alt="close"
+          height="30"
+          width="30"
+        />
       </button>
     </div>
     <div id="title">
-      <img src="../../../../../assets/images/trophy.png" alt="trophy" />
       <h1>Leaderboard</h1>
     </div>
     <div id="list">
       <table mat-table [dataSource]="leaderboardScores">
         <ng-container matColumnDef="rank">
-          <th mat-header-cell *matHeaderCellDef></th>
+          <th mat-header-cell *matHeaderCellDef>Rank</th>
           <td mat-cell *matCellDef="let leaderboardScores; let i = index">
             {{ i + 1 }}
           </td>
+          <td mat-footer-cell *matFooterCellDef></td>
         </ng-container>
 
         <ng-container matColumnDef="username">
@@ -28,6 +28,7 @@
           <td mat-cell *matCellDef="let leaderboardScores">
             {{ leaderboardScores.username }}
           </td>
+          <td mat-footer-cell *matFooterCellDef>You</td>
         </ng-container>
 
         <ng-container matColumnDef="score">
@@ -35,6 +36,7 @@
           <td mat-cell *matCellDef="let leaderboardScores">
             {{ leaderboardScores.score }}
           </td>
+          <td mat-footer-cell *matFooterCellDef>{{ userHigh }}</td>
         </ng-container>
 
         <tr
@@ -45,13 +47,12 @@
           mat-row
           *matRowDef="let row; columns: ['rank', 'username', 'score']"
         ></tr>
-      </table>
-    </div>
 
-    <mat-divider></mat-divider>
-    <div id="currentPlayerDisplay">
-      <h4>You</h4>
-      <p>Your current score here</p>
+        <tr
+          mat-footer-row
+          *matFooterRowDef="['rank', 'username', 'score']"
+        ></tr>
+      </table>
     </div>
   </div>
 </div>

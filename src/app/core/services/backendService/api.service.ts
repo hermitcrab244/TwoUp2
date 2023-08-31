@@ -29,5 +29,16 @@ export class APIService {
     return this.http.get<any[]>(`${this.apiURL}/retrieve-scores`);
   }
 
-  colour() {}
+  colourUpdate(colour_pref: string, user_ID: number): Observable<any> {
+    const body = { colour_pref, user_ID };
+    return this.http.post(`${this.apiURL}/colour-update`, body);
+  }
+
+  userHighScore(username: string): Observable<any> {
+    return this.http.get(`${this.apiURL}/user-highest-score`, {
+      params: {
+        username: username,
+      },
+    });
+  }
 }

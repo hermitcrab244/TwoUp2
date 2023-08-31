@@ -17,11 +17,15 @@ export class ButtonsComponent {
   constructor(public dialog: MatDialog) {}
 
   openLeaderboard() {
-    this.leaderboardDialogRef = this.dialog.open(LeaderbaordComponent);
+    this.leaderboardDialogRef = this.dialog.open(LeaderbaordComponent, {
+      width: '25%',
+    });
   }
 
   openSettings() {
-    this.settingsDialogRef = this.dialog.open(SettingsComponent);
+    this.settingsDialogRef = this.dialog.open(SettingsComponent, {
+      width: '20%',
+    });
   }
 
   openEnd() {

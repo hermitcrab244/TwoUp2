@@ -36,6 +36,15 @@ export class EndComponent implements OnInit {
   }
 
   endGame() {
+    // this.api.colourUpdate(this.colour_pref, this.user_ID).subscribe(
+    //   (response: any) => {
+    //     console.log(response.message);
+    //   },
+    //   (error) => {
+    //     console.log('Error: ', error);
+    //   }
+    // );
+
     this.api.endGame(this.user_ID, this.username, this.score).subscribe(
       (response: any) => {
         this.openSnackBar(response.message);

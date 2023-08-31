@@ -98,6 +98,47 @@ app.get("/retrieve-scores", (req, res) => {
   });
 });
 
+app.get("/user-highest-score", (req, res) => {
+  const { username } = req.query;
+
+  const userScoreQuery = `SELECT MAX(score) AS highest_score FROM game WHERE username = ?`;
+  db.query(userScoreQuery, [username], (err, results) => {
+    if (err) {
+      res
+        .status(500)
+        .json({ message: "Failed to retrieve users highest score" });
+    } else {
+      const response = {
+        message: "Successfully retrieved users highscore",
+        data: results[0].highest_score,
+      };
+
+      if (response.data === null) {
+        res
+          .status(200)
+          .json({ message: "Play a round to get your score", data: 0 });
+      } else {
+        res.status(200).json(response);
+      }
+    }
+  });
+});
+
+app.post("/colour-update", (req, res) => {
+  const { colour_pref, user_ID } = req.body;
+
+  const updateQuery = `UPDATE users SET colour_pref = ? WHERE user_ID = ?`;
+  db.query(updateQuery, [colour_pref, user_ID], (err, results) => {
+    if (err) {
+      res.status.json({ message: "Failed to update colour preference" });
+    } else {
+      res
+        .status(200)
+        .json({ message: "Colour preference successfully updated" });
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

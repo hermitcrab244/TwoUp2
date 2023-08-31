@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
           this.gamedataSerive.playerName = username;
           this.gamedataSerive.userID = response.userID;
           this.gamedataSerive.userColourPref = response.colour_pref;
+          this.gamedataSerive.setUserColourChoice(response.colour_pref);
           this.router.navigate(['/two-up']);
           this.openSnackBar('Login Successful');
         },
