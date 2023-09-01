@@ -19,6 +19,7 @@ export class LeaderbaordComponent implements OnInit {
     private dataService: GameDataService
   ) {}
 
+  //Retrieves both the leaderboard data and current users high score
   ngOnInit() {
     this.username = this.dataService.playerName;
     this.getLeaderboardData();
@@ -26,6 +27,7 @@ export class LeaderbaordComponent implements OnInit {
   }
 
   getLeaderboardData() {
+    //Backend call that retreieves the leaderboard data
     this.api.leaderboard().subscribe(
       (response: any) => {
         console.log('Response: ', response.message);
@@ -39,9 +41,9 @@ export class LeaderbaordComponent implements OnInit {
   }
 
   getUserHighScore(username: string) {
+    //Backend call that retireves the current users highest score
     this.api.userHighScore(username).subscribe(
       (response: any) => {
-        console.log('API Response: ', response);
         console.log('Response: ', response.message);
         console.log('Data: ', response.data);
         this.userHigh = response.data;

@@ -3,6 +3,7 @@
     <h5>Dont have an account yet?</h5>
   </div>
   <form class="reg-form" [formGroup]="regForm" (ngSubmit)="registerUser()">
+    <!-- Username field -->
     <div>
       <mat-form-field id="username-field">
         <mat-label for="username">Username</mat-label>
@@ -16,6 +17,7 @@
       </mat-form-field>
     </div>
 
+    <!-- Password field -->
     <div>
       <mat-form-field id="password-field">
         <mat-label for="password">Password</mat-label>
@@ -30,6 +32,7 @@
       </mat-form-field>
     </div>
 
+    <!-- Confirm password field -->
     <div>
       <mat-form-field id="confirmPassword-field">
         <mat-label for="confirmPassword">Confirm Password</mat-label>
@@ -45,6 +48,7 @@
       </mat-form-field>
     </div>
 
+    <!-- Register button -->
     <div id="loginBtn">
       <button>Register</button>
     </div>

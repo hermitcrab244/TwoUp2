@@ -1,6 +1,7 @@
 <div class="box">
   <div class="container">
     <div id="closeContainer">
+      <!-- Close button -->
       <button id="closeBtn" matTooltip="Close" mat-dialog-close>
         <img
           src="../../../../../assets/images/close.png"
@@ -10,10 +11,12 @@
         />
       </button>
     </div>
+    <!-- Title -->
     <div id="title">
       <h1>Leaderboard</h1>
     </div>
     <div id="list">
+      <!-- Leaderboard table -->
       <table mat-table [dataSource]="leaderboardScores">
         <ng-container matColumnDef="rank">
           <th mat-header-cell *matHeaderCellDef>Rank</th>
@@ -36,6 +39,8 @@
           <td mat-cell *matCellDef="let leaderboardScores">
             {{ leaderboardScores.score }}
           </td>
+
+          <!-- Current users high score -->
           <td mat-footer-cell *matFooterCellDef>{{ userHigh }}</td>
         </ng-container>
 

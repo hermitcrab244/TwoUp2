@@ -16,18 +16,21 @@ export class ButtonsComponent {
 
   constructor(public dialog: MatDialog) {}
 
+  //Opens leaderboard dialog box that holds the leaderboard component
   openLeaderboard() {
     this.leaderboardDialogRef = this.dialog.open(LeaderbaordComponent, {
       width: '25%',
     });
   }
 
+  //Opens settings dialog box that holds settings component
   openSettings() {
     this.settingsDialogRef = this.dialog.open(SettingsComponent, {
       width: '20%',
     });
   }
 
+  //Opens end game dialog box that holds end game component
   openEnd() {
     this.endDialogRef = this.dialog.open(EndComponent);
   }

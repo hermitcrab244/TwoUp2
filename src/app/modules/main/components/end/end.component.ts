@@ -23,6 +23,7 @@ export class EndComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
+  //Gets data from the service that is required
   ngOnInit() {
     this.gameService.getEndGameResults().subscribe((data) => {
       if (!data) {
@@ -35,30 +36,25 @@ export class EndComponent implements OnInit {
     });
   }
 
+  //Method runs when user wants to end the game
   endGame() {
-    // this.api.colourUpdate(this.colour_pref, this.user_ID).subscribe(
-    //   (response: any) => {
-    //     console.log(response.message);
-    //   },
-    //   (error) => {
-    //     console.log('Error: ', error);
-    //   }
-    // );
-
+    //Backend call that saves the game results data
     this.api.endGame(this.user_ID, this.username, this.score).subscribe(
       (response: any) => {
-        this.openSnackBar(response.message);
+        this.openSnackBar(response.message); //Displays success message for user
       },
+      //Throws error if results fail to save
       (error) => {
         if (error) {
-          this.openSnackBar('Results failed to save');
+          this.openSnackBar('Results failed to save'); //Displays error message for user
         }
       }
     );
-    this.endDialogRef.close();
-    this.router.navigate(['/end']);
+    this.endDialogRef.close(); //Closes question dialog box
+    this.router.navigate(['/end']); //Routes the user to the end game page
   }
 
+  //Method opens snackbar when called
   openSnackBar(message: string) {
     this.snackBar.open(message, '', {
       duration: 2000,

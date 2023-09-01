@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   colourSelect!: string;
 
   constructor(private dataService: GameDataService) {
+    //Retrieves colour prefence from service and sets theme accordingly
     this.dataSubscription = this.dataService
       .getUserColourChoice()
       .subscribe((data) => {
@@ -28,6 +29,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.colourSelect = 'default';
+    this.colourSelect = 'default'; //Sets inital theme
   }
 }

@@ -1,5 +1,6 @@
 <div class="container">
   <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+    <!-- Username field -->
     <div>
       <mat-form-field id="username-field">
         <mat-label for="username">Username</mat-label>
@@ -14,6 +15,7 @@
       </mat-form-field>
     </div>
 
+    <!-- Password field -->
     <div>
       <mat-form-field id="password-field">
         <mat-label for="password">Password</mat-label>
@@ -28,6 +30,7 @@
       </mat-form-field>
     </div>
 
+    <!-- Login button -->
     <div id="loginBtn">
       <button>Login</button>
     </div>

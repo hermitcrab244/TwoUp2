@@ -1,6 +1,7 @@
 <div class="box">
   <div class="container">
     <div id="closeContainer">
+      <!-- Close button -->
       <button id="closeBtn" matTooltip="Close" mat-dialog-close>
         <img
           src="../../../../../assets/images/close.png"
@@ -10,10 +11,12 @@
         />
       </button>
     </div>
+    <!-- title -->
     <div id="title">
       <h2>Choose a theme</h2>
     </div>
     <div class="button groups">
+      <!-- Colour selection buttons row 1 -->
       <div id="colour-row-1">
         <button
           mat-raised-button
@@ -31,6 +34,7 @@
           (click)="colourSelect('green')"
         ></button>
       </div>
+      <!-- Colour selection buttons row 2 -->
       <div id="colour-row-2">
         <button
           mat-raised-button

@@ -11,8 +11,8 @@ export class GameComponent {
   tails = 'tails';
   headsOdds = 'headsOdds';
   tailsOdds = 'tailsOdds';
-  imgPath = '../../../../../assets/images/';
-  gameMessage = 'Welcome to the Two Up Game';
+  imgPath = '../../../../../assets/images/'; //Sets default image path
+  gameMessage = 'Welcome to the Two Up Game'; //Inital message
   isAnimating = false;
   selectDisabled: boolean = false;
   playerChoice = '';
@@ -32,9 +32,11 @@ export class GameComponent {
     this.gameMessage = 'You guessed ' + this.playerChoice;
     this.selectDisabled = true;
 
+    //Simulates coin toss for both coins
     const flip1 = Math.random() < 0.5 ? this.heads : this.tails;
     const flip2 = Math.random() < 0.5 ? this.heads : this.tails;
 
+    //Determines outcome of flip boths upon random nunmber generator
     if (flip1 === flip2) {
       flipResult = flip1;
     } else if (flip1 === this.heads && flip1 !== flip2) {
@@ -43,9 +45,10 @@ export class GameComponent {
       flipResult = this.tailsOdds;
     }
 
-    this.flipAnimation();
+    this.flipAnimation(); //Calls animation method
 
     setTimeout(() => {
+      //Sets game messsage based upon results of toss and player selection
       this.setCoinFaces(flipResult);
 
       switch (flipResult) {
@@ -68,12 +71,13 @@ export class GameComponent {
     }, 2000);
 
     setTimeout(() => {
-      this.gameMessage = 'Select to flip again!';
+      this.gameMessage = 'Select to flip again!'; //Sets next game message
       this.selectDisabled = false;
     }, 4000);
   }
 
   setCoinFaces(results: string) {
+    //Sets coin face images based upon toss simulation
     switch (results) {
       case 'heads':
         this.coin1 = this.imgPath + this.coinHeads;
@@ -96,6 +100,7 @@ export class GameComponent {
     }
   }
 
+  //Flip animation method
   flipAnimation() {
     this.isAnimating = true;
     setTimeout(() => {

@@ -10,6 +10,7 @@ const db = mysql.createConnection({
   database: "twoup_game",
 });
 
+// Establishes a connection to the database
 db.connect((err) => {
   if (err) throw err;
   console.log("Connection to database established");
@@ -18,6 +19,7 @@ db.connect((err) => {
 const PORT = process.env.PORT || 5000;
 const app = express().use(cors()).use(bodyParser.json());
 
+//Creates end point user registration
 app.post("/registration", (req, res) => {
   const { username, password } = req.body;
 
@@ -42,6 +44,7 @@ app.post("/registration", (req, res) => {
   });
 });
 
+//Creates end point user login
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
 
@@ -68,6 +71,7 @@ app.post("/login", (req, res) => {
   });
 });
 
+//Creates end point for saving users round results
 app.post("/end", (req, res) => {
   const { user_ID, username, score } = req.body;
 
@@ -81,6 +85,7 @@ app.post("/end", (req, res) => {
   });
 });
 
+//Creates end point that retrieves top 10 results to be displayed
 app.get("/retrieve-scores", (req, res) => {
   const retrieveQuery =
     "SELECT username, score FROM game ORDER BY score DESC LIMIT 10";
@@ -98,6 +103,7 @@ app.get("/retrieve-scores", (req, res) => {
   });
 });
 
+//Creates end point that retireves current users highest score
 app.get("/user-highest-score", (req, res) => {
   const { username } = req.query;
 
@@ -124,6 +130,7 @@ app.get("/user-highest-score", (req, res) => {
   });
 });
 
+//Creates end point uthat updates users colour preference
 app.post("/colour-update", (req, res) => {
   const { colour_pref, user_ID } = req.body;
 

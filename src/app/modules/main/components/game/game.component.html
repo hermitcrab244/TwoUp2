@@ -1,6 +1,7 @@
 <div>
   <mat-card class="msg-card">
     <mat-card-content id="msg-content">
+      <!-- Displays game messages -->
       <div>
         <b>{{ gameMessage }}</b>
       </div>
@@ -10,12 +11,14 @@
 <div>
   <mat-card class="game-card">
     <mat-card-content id="game-content">
+      <!-- Coin images -->
       <div class="coin-img">
         <img [src]="coin1" id="coin" [ngClass]="{ 'coin-flip': isAnimating }" />
         <img [src]="coin2" id="coin" [ngClass]="{ 'coin-flip': isAnimating }" />
       </div>
       <div class="btn-container">
         <div class="btn-select">
+          <!-- Selection buttons -->
           <button
             mat-raised-button
             id="btn-select-heads"
